@@ -1,0 +1,430 @@
+/*
+ * Casa Del Sol AZ - Contact Page Styles
+ * Version: 4.0.0
+ * Description: High-performance contact page with integrated layout
+ * Last updated: 2025-03-20
+ */
+
+.contact-page {
+  background: url('../img/bg2.jpg') center/cover fixed no-repeat;
+  contain: paint; /* Optimize paint operations */
+  color-scheme: light; /* Optimize rendering in light mode */
+}
+
+/* Contact Section Styles - Core layout */
+.contact-section {
+  padding: var(--spacing-lg) 0;
+  color: var(--white);
+  contain: content; /* Performance optimization */
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateZ(0); /* Prevent text rasterization issues */
+}
+
+/* Integrated Contact Container - Main wrapper */
+.integrated-contact-container {
+  display: flex;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../img/wood-bg.jpg') center/cover no-repeat;
+  border-radius: 16px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  contain: layout style; /* Optimize rendering */
+  will-change: transform; /* Optimize compositing */
+  backface-visibility: hidden; /* Prevent flickering during animations */
+}
+
+/* Contact Form Wrapper - Left side */
+.contact-form-wrapper {
+  flex: 1.5;
+  background-color: var(--dark, rgba(255, 255, 255, 0.98));
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateZ(0); /* Force GPU acceleration */
+  will-change: transform, opacity; /* Optimize for animations */
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Contact Info Wrapper - Right side */
+.contact-info-wrapper {
+  flex: 1;
+  padding: 3.5rem 2.5rem;
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+  contain: content; /* Optimize rendering */
+}
+
+.contact-intro {
+  margin-bottom: 2.5rem;
+}
+
+.contact-intro p {
+  color: var(--light);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 0;
+  letter-spacing: 0.2px;
+}
+
+/* 2×2 Grid for Contact Info - Refined */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  margin-bottom: 2.5rem;
+  contain: layout style; /* Optimize grid rendering */
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.3s ease;
+  contain: layout; /* Prevent layout thrashing */
+}
+
+.info-item:hover {
+  transform: translateY(-3px);
+}
+
+.info-item .icon {
+  flex: 0 0 48px;
+  height: 48px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  transform: translateZ(0); /* Hardware acceleration */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item .details h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  color: var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.info-item .details p {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: var(--light);
+  font-size: 0.95rem;
+}
+
+/* Contact links styling */
+.info-item .details p a {
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.info-item .details p a:hover {
+  color: var(--primary);
+}
+
+.info-item .details p a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary);
+  transition: width 0.2s ease;
+}
+
+.info-item .details p a:hover::after {
+  width: 100%;
+}
+
+/* Hours section special styling for compact display */
+.info-item:nth-child(4) .details p {
+  font-size: 0.93rem;
+  line-height: 1.4;
+}
+
+/* Social Connect Section - Enhanced */
+.social-connect {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.social-connect h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform; /* Hardware acceleration hint */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  transform: translateY(-5px) rotate(5deg);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: var(--white);
+  color: var(--primary);
+}
+
+/* Progressive Enhancement for browsers that support it */
+@supports (backdrop-filter: blur(10px)) {
+  .integrated-contact-container {
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  
+  .contact-info-wrapper {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1441px) {
+  .integrated-contact-container {
+    max-width: 1300px;
+  }
+  
+  .contact-info-wrapper {
+    padding: 4rem 3rem;
+  }
+  
+  .info-grid {
+    gap: 2.5rem 2rem;
+  }
+}
+
+/* Desktop and Small Desktop */
+@media (max-width: 1200px) {
+  .integrated-contact-container {
+    max-width: 95%;
+  }
+}
+
+/* Tablets and Small Desktops */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .contact-info-wrapper {
+    padding: 3rem 2rem;
+  }
+  
+  .info-grid {
+    gap: 1.75rem 1.5rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  .integrated-contact-container {
+    flex-direction: column-reverse;
+    border-radius: 14px;
+  }
+  
+  .contact-form-wrapper, 
+  .contact-info-wrapper {
+    flex: none;
+    width: 100%;
+  }
+  
+  .contact-info-wrapper {
+    padding: 3rem 2rem 2rem;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+  }
+}
+
+/* Small Tablets and Large Phones */
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-section {
+    padding: var(--spacing-md) 0;
+  }
+  
+  .integrated-contact-container {
+    border-radius: 12px;
+  }
+  
+  .contact-info-wrapper {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+  
+  .social-connect {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  
+  .contact-intro p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .info-item {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .info-item .icon {
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .social-icons a {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+  
+  .contact-info-wrapper {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+  
+  .contact-intro {
+    margin-bottom: 1.75rem;
+  }
+  
+  .info-grid {
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Print styles - optimize for paper printing */
+@media print {
+  .integrated-contact-container {
+    display: block;
+    background: white !important;
+    box-shadow: none;
+    color: black !important;
+    page-break-inside: avoid;
+  }
+  
+  .contact-form-wrapper,
+  .contact-info-wrapper {
+    width: 100%;
+    background: white !important;
+    color: black !important;
+    padding: 0.5cm;
+    page-break-inside: avoid;
+  }
+  
+  .info-item .icon {
+    background-color: transparent !important;
+    border: 1px solid black;
+    color: black !important;
+  }
+  
+  .contact-intro p,
+  .info-item .details p,
+  .info-item .details h3,
+  .form-header h3,
+  .section-title {
+    color: black !important;
+  }
+  
+  .social-connect,
+  .submit-button,
+  .back-to-top {
+    display: none !important; /* Hide non-essential elements when printing */
+  }
+  
+  .info-grid {
+    display: block;
+  }
+  
+  .info-item {
+    margin-bottom: 1cm;
+  }
+}
+
+/* High-contrast mode support */
+@media (forced-colors: active) {
+  .info-item .icon {
+    border: 2px solid CanvasText;
+  }
+  
+  .social-icons a {
+    border: 2px solid CanvasText;
+  }
+  
+  .integrated-contact-container {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Save-data mode support */
+@media (prefers-reduced-data: reduce) {
+  .contact-page {
+    background: var(--dark) !important; /* Avoid loading background image */
+  }
+  
+  .integrated-contact-container {
+    background: rgba(0, 0, 0, 0.8) !important; /* Skip background image */
+  }
+}

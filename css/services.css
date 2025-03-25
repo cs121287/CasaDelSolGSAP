@@ -1,0 +1,247 @@
+/*
+ * Casa Del Sol AZ - Services Page Styles
+ * Version: 3.0.0
+ * Description: Specific styles for the services page
+ */
+
+/* ===== SERVICES PAGE STYLES ===== */
+.services-page {
+  background: url('../img/cta-bg3.jpg') center/cover fixed no-repeat;
+}
+
+.services-intro {
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  color: var(--white);
+}
+
+.services-intro .section-title {
+  color: #ffffff !important;
+}
+
+.services-intro .intro-text p {
+  color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Services section */
+.section-title {
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-title:after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary);
+  margin: var(--spacing-sm) auto 0;
+}
+
+.services-section {
+  padding: var(--spacing-lg) 0;
+  background-color: transparent;
+}
+
+.services-container {
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/wood-bg.jpg') center/cover no-repeat;
+  box-shadow: 
+    0 0 0 2px rgba(0, 0, 0, 1),
+    0 0 8px 2px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  contain: content;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-title {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--white);
+  position: relative;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.services-title:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.services-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  margin: 0 auto;
+  max-width: 100%;
+  padding-bottom: var(--spacing-sm);
+}
+
+.service-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  width: 110px;
+  text-decoration: none;
+}
+
+.service-link:hover, .service-link:focus {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.service-link i {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.service-link span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.services-description {
+  color: var(--light);
+  margin-top: var(--spacing-md);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Add-ons section */
+.add-ons-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 100%;
+  color: var(--white);
+  contain: content; /* Performance optimization */
+}
+
+.add-ons-column {
+  flex: 1 1 250px;
+  padding: 0 10px;
+  max-width: 350px;
+}
+
+.add-ons-list {
+  text-align: left;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.add-ons-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.add-ons-list li i {
+  color: var(--primary);
+  font-size: 0.5rem;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* FAQ section */
+.faq-section {
+  padding: var(--spacing-xl) 0;
+  background-color: transparent;
+}
+
+.faq-container {
+  max-width: 1200px; /* Match services container width */
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/wood-bg.jpg') center/cover no-repeat;
+  box-shadow: 
+    0 0 0 2px rgba(0, 0, 0, 1),
+    0 0 8px 2px rgba(0, 0, 0, 0.6);
+}
+
+.faq-item {
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+.faq-question .fa-minus {
+  display: none;
+}
+
+.faq-question.active .fa-plus {
+  display: none;
+}
+
+.faq-question.active .fa-minus {
+  display: inline-block;
+  color: var(--primary);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer.active {
+  max-height: 300px; /* Allow enough height for content */
+}
+
+.faq-answer p {
+  padding-bottom: var(--spacing-sm);
+  line-height: 1.6;
+  color: var(--light);
+}

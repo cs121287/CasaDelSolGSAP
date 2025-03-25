@@ -1,0 +1,249 @@
+/*
+ * Casa Del Sol AZ - Core Stylesheet
+ * Version: 3.0.0
+ * Description: Core styles, reset, typography, and variables
+ */
+ 
+@charset "UTF-8";
+
+/* Import section scrolling behavior */
+@import 'section-scroll.css';
+
+/* ===== CSS RESET ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  /* Colors */
+  --primary: #d4af37;
+  --primary-light: #d4af37;
+  --secondary: #8a6d3b;
+  --dark: #333333;
+  --light: #f8f8f8;
+  --white: #ffffff;
+  --gray: #767676;
+  --gray-light: #e9e9e9;
+  --overlay-dark: rgba(0, 0, 0, 0.65);
+  --overlay-light: rgba(255, 255, 255, 0.85);
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Raleway', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-med: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-header: transform 0.4s ease, background-color 0.4s ease, background-image 1s ease, box-shadow 0.3s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Header heights */
+  --header-height: 100px;
+  --header-height-mobile: 85px;
+  
+  /* Mobile menu variables */
+  --menu-transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  --menu-bg: rgba(0, 0, 0, 0.95);
+  --burger-width: 24px;
+}
+
+/* ===== BASE ELEMENTS ===== */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--dark);
+  background-color: var(--white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+/* ===== TEXT UTILITIES ===== */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-block;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all var(--transition-med);
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Reset focus and active states */
+.btn:focus,
+.btn:active {
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
+}
+
+/* ===== COMMON SECTIONS ===== */
+.page-banner {
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--white);
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+}
+
+.page-banner h1 {
+  color: var(--white);
+  font-size: 3rem;
+}
+
+/* ===== BACK TO TOP BUTTON ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 99;
+  transform: translateY(10px);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--secondary);
+}
+
+.back-to-top i {
+  font-size: 1.2rem;
+}
+
+/* Note: Responsive styles moved to responsive.css */

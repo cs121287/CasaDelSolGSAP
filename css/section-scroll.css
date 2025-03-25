@@ -1,0 +1,28 @@
+/* Optimize section scrolling experience */
+html {
+  scroll-behavior: smooth; /* Native smooth scrolling fallback */
+  scroll-padding-top: 120px; /* Fallback for browsers that support scroll-padding */
+}
+
+/* Ensure sections have proper padding to account for fixed header */
+section[id] {
+  scroll-margin-top: 120px; /* Modern browsers - space from top when scrolled to */
+  padding-top: 1rem; /* Add some visual space */
+}
+
+/* Make sure focus states are visible for accessibility */
+.section-link:focus {
+  outline: 2px dotted var(--primary);
+  outline-offset: 2px;
+}
+
+/* Optimize section targets for mobile */
+@media (max-width: 768px) {
+  section[id] {
+    scroll-margin-top: 150px; /* More space for mobile header */
+  }
+  
+  html {
+    scroll-padding-top: 150px;
+  }
+}
