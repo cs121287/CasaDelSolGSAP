@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Casa Del Sol AZ to schedule a tour or inquire about hosting your event at our premier Arizona venue">
+    <title>Contact Us | Casa Del Sol AZ</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/contact.css" as="style">
+    <link rel="preload" href="css/contact-form.css" as="style">
+    <link rel="preload" href="fonts/PlayfairDisplay-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Raleway-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Core CSS - Load critical styles immediately -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/common.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/contact-form.css">
+    
+    <!-- Responsive CSS (load last to ensure it overrides other styles) -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Optimized Font Awesome loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Google Fonts with display=swap for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <!-- DNS prefetch for third-party services -->
+    <link rel="dns-prefetch" href="//cdn.emailjs.com">
+</head>
+<body class="contact-page">
+    <!-- Background container with reduced paint operations -->
+    <div class="video-container">
+        <div class="bg-image" style="background-image: url('img/bg2.jpg');" loading="eager"></div>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="header transparent" id="header">
+        <div class="container">
+            <div class="header-main">
+                <!-- Logo aligned left -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="200" height="80" fetchpriority="high">
+                    </a>
+                </div>
+                
+                <!-- Center column for title and section links -->
+                <div class="header-center">
+                    <!-- Current page title in gold -->
+                    <h1 class="page-title">Contact Us</h1>
+                    
+                    <!-- Section links - centered -->
+                    <div class="section-links">
+                        <a href="#contact-section" class="section-link">Contact & Inquiry</a>
+                    </div>
+                </div>
+                
+                <!-- Right-aligned navigation -->
+                <div class="header-right">
+                    <!-- Navigation menu at top right -->
+                    <nav class="main-nav">
+                        <ul class="nav-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Our Services</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html" class="active">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Mobile menu toggle -->
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Overlay Container -->
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-content">
+                <nav class="mobile-nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </nav>
+                <!-- Mobile section links if on a page with sections -->
+                <div class="section-links">
+                    <a href="#contact-section" class="section-link">Contact & Inquiry</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+		        <section class="page-banner">
+            <div class="container">
+                <h1></h1>
+            </div>
+        </section>
+        <!-- Integrated Contact Section -->
+        <section id="contact-section" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
+                
+                <div class="integrated-contact-container">
+                    <!-- Left column: Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <div class="form-header">
+                            <h3>Inquire About Your Event</h3>
+                            <div class="form-decoration"></div>
+                        </div>
+                        
+                        <form id="contactForm" class="contact-form" action="#" method="post">
+                            <input type="hidden" name="time" id="form_time">
+                            
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required autocomplete="name">
+                                <label for="name" class="floating-label">Full Name <span class="required">*</span></label>
+                                <div class="form-highlight"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                                <label for="email" class="floating-label">Email Address <span class="required">*</span></label>
+                                <div class="form-highlight"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" autocomplete="tel">
+                                <label for="phone" class="floating-label">Phone Number</label>
+                                <div class="form-highlight"></div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group half date-input">
+                                    <label for="event-date">Preferred Event Date</label>
+                                    <input type="date" id="event-date" name="event-date" style="color: var(--form-placeholder);">
+                                </div>
+                                
+                                <div class="form-group half select-input">
+                                    <label for="event-type">Event Type</label>
+                                    <div class="select-wrapper">
+                                        <select id="event-type" name="event-type" style="color: var(--form-placeholder);">
+                                            <option value="" disabled selected hidden>Select event type...</option>
+                                            <option value="wedding">Wedding</option>
+                                            <option value="quinceanera">Quinceañera</option>
+                                            <option value="baptism">Baptism</option>
+                                            <option value="first-communion">First Communion</option>
+                                            <option value="confirmation">Confirmation Party</option>
+                                            <option value="birthday">Birthday Party</option>
+                                            <option value="anniversary">Anniversary</option>
+                                            <option value="graduation">Graduation</option>
+                                            <option value="engagement">Engagement Party</option>
+                                            <option value="bridal-shower">Bridal Shower</option>
+                                            <option value="baby-shower">Baby Shower</option>
+                                            <option value="corporate">Corporate Event</option>
+                                            <option value="memorial">Memorial Service</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <div class="select-arrow">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="number" id="guests" name="guests" min="1">
+                                <label for="guests" class="floating-label">Estimated Guest Count</label>
+                                <div class="form-highlight"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                                <label for="message" class="floating-label">Your Message <span class="required">*</span></label>
+                                <div class="form-highlight"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-button">
+                                <span class="button-text">Submit Inquiry</span>
+                                <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Right column: Contact Information -->
+                    <div class="contact-info-wrapper">
+                        <div class="contact-intro">
+                            <p>We'd love to hear from you! Whether you're ready to book your event or just have questions, our team is here to help make your vision a reality.</p>
+                        </div>
+                        
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                </div>
+                                <div class="details">
+                                    <h3>Location</h3>
+                                    <p>18401 W Moreland St<br>Goodyear, AZ 85338</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="icon">
+                                    <i class="fas fa-phone" aria-hidden="true"></i>
+                                </div>
+                                <div class="details">
+                                    <h3>Phone</h3>
+                                    <p><a href="tel:+14801234567">(480) 123-4567</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="icon">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </div>
+                                <div class="details">
+                                    <h3>Email</h3>
+                                    <p><a href="mailto:info@casadesolaz.com">info@casadesolaz.com</a></p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="icon">
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                </div>
+                                <div class="details">
+                                    <h3>Hours</h3>
+                                    <p>Monday - Friday: 9am - 5pm<br>
+                                    Saturday: 10am - 4pm<br>
+                                    Sunday: By Appointment Only</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-connect">
+                            <h3>Connect With Us</h3>
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/casadelsol_events/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.tiktok.com/@casa.del.sol.events" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                                    <i class="fab fa-tiktok" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal containers - Outside the regular flow for performance -->
+        <div id="successModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="successModalTitle">
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+                <div class="modal-content success-content">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    </div>
+                    <h3 id="successModalTitle">Thank You!</h3>
+                    <p>Your message has been sent successfully. A member of our team will be in touch with you shortly.</p>
+                    <button id="closeSuccessModal" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error modal for form submission errors -->
+        <div id="errorModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="errorModalTitle">
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+                <div class="modal-content error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                    </div>
+                    <h3 id="errorModalTitle">Submission Error</h3>
+                    <p id="errorModalMessage">There was a problem sending your message. Please try again or contact us directly at (480) 123-4567.</p>
+                    <button id="closeErrorModal" class="btn btn-secondary">Close</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="120" height="48" loading="lazy">
+                    <p>Where Memories Are Made</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <p class="social-heading">Follow Us On Instagram and TikTok</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/casadelsol_events/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@casa.del.sol.events" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                        <i class="fab fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Casa Del Sol AZ. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#header" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+    
+    <!-- Core scripts with performance optimization -->
+    <script src="js/main.js" defer></script>
+    <script src="js/header-scroll.js" defer></script>
+    
+    <!-- EmailJS library - load asynchronously -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js" async></script>
+    
+    <!-- Modal and form handlers - using a bundled approach for fewer HTTP requests -->
+    <script src="js/contact-bundle.js" defer></script>
+    
+    <!-- Schema.org structured data for better SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Casa Del Sol AZ",
+      "image": "https://casadesolaz.com/img/logo.png",
+      "telephone": "+14801234567",
+      "email": "info@casadesolaz.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "18401 W Moreland St",
+        "addressLocality": "Goodyear",
+        "addressRegion": "AZ",
+        "postalCode": "85338",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ],
+      "url": "https://casadesolaz.com/contact.html"
+    }
+    </script>
+</body>
+</html>

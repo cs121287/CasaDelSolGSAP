@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Casa Del Sol AZ - Arizona's premier event venue with stunning views, elegant spaces, and exceptional service">
+    <title>About Us | Casa Del Sol AZ</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/components/header.css" as="style">
+    <link rel="preload" href="css/components/header-transitions.css" as="style">
+    <link rel="preload" href="css/about.css" as="style">
+    <link rel="preload" href="img/logo.png" as="image" fetchpriority="high">
+    <link rel="preload" href="img/bg2.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="img/cta-bg.jpg" as="image" fetchpriority="low">
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/header-transitions.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/common.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/about.css">
+    
+    <!-- Responsive CSS (load last to ensure it overrides other styles) -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- External CSS - optimized loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Fonts with preconnect for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"></noscript>
+</head>
+<body class="about-page">
+    <div class="video-container">
+        <div class="bg-image" style="background-image: url('img/bg2.jpg');"></div>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="header transparent header-transitions" id="header">
+      <div class="container">
+        <div class="header-main">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="index.html" aria-label="Casa Del Sol AZ - Home">
+              <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="200" height="80" fetchpriority="high">
+            </a>
+          </div>
+          
+          <!-- Main navigation with mega menu -->
+          <nav class="main-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li class="has-dropdown">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                    <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                    <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="services.html">Services</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                    <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                    <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                    <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="about.html" class="active">About</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                    <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                    <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                    <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="gallery.html">Gallery</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="gallery.html#photos" class="section-link">Photo Gallery</a></li>
+                    <li><a href="gallery.html#past-events" class="section-link">Past Events</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                    <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          
+          <!-- Mobile menu toggle -->
+          <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Overlay Container -->
+      <div class="mobile-menu-container" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-content">
+          <nav class="mobile-nav" aria-label="Mobile Navigation">
+            <ul class="nav-links">
+              <!-- Home with dropdown -->
+              <li style="--i:0" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Home</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="index.html">Home Page</a></li>
+                  <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                  <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                  <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <!-- Services with dropdown -->
+              <li style="--i:1" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Services</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="services.html">Services Page</a></li>
+                  <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                  <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                  <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                  <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <!-- About with dropdown -->
+              <li style="--i:2" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle active">
+                  <span>About</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="about.html">About Page</a></li>
+                  <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                  <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                  <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                  <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                </ul>
+              </li>
+              
+              <!-- Gallery with dropdown -->
+              <li style="--i:3" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Gallery</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="gallery.html">Gallery Page</a></li>
+                  <li><a href="gallery.html#photos" class="section-link">Photo Gallery</a></li>
+                  <li><a href="gallery.html#past-events" class="section-link">Past Events</a></li>
+                </ul>
+              </li>
+              
+              <!-- Contact with dropdown -->
+              <li style="--i:4" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Contact</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="contact.html">Contact Page</a></li>
+                  <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                  <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Banner with title and section links -->
+        <section class="page-banner">
+            <div class="container">
+                <h1></h1>
+            </div>
+        </section>
+
+    <main>
+        <section id="about-intro" class="about-intro">
+            <div class="container">
+                <!-- Title moved outside container -->
+                <h2 class="about-title">Arizona's Premier Event Venue</h2>
+                <div class="about-container">
+                    <div class="about-grid">
+                        <div class="about-content">
+                            <p>Casa Del Sol is more than just an event venue—it's a destination where memories are created and dreams come to life. Nestled in the beautiful landscape of Goodyear, Ar[...]
+                            <p>Since opening our doors in 2020, we've hosted hundreds of weddings, corporate gatherings, and special celebrations, each one uniquely tailored to reflect the vision of o[...]
+                            <p>At Casa Del Sol, we believe in creating experiences that exceed expectations. From the moment you step onto our property until the last guest departs, you'll be embraced[...]
+                        </div>
+                        <div class="about-image" id="venue-image">
+                            <img src="img/about-1.jpg" alt="Casa Del Sol venue exterior" width="500" height="400" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="our-story" class="story-section">
+            <div class="container">
+                <h2 class="section-title">Our Story</h2>
+                <div class="story-container">
+                    <div class="story-content">
+                        <p>The journey of Casa Del Sol began with a vision to create an event space that would showcase the natural beauty of Arizona while providing world-class amenities for celebrat[...]
+                        <p>After extensive renovations and thoughtful design work, Casa Del Sol opened in spring 2020, quickly becoming one of the region's most sought-after venues despite the challen[...]
+                        <p>Today, our venue continues to evolve and improve while maintaining the welcoming atmosphere and exceptional service that have become our hallmark. We take pride in being par[...]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="team-container">
+                    <div class="team-members">
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="img/team-1.jpg" alt="Maria Rodriguez - Venue Director" width="300" height="300" loading="lazy">
+                            </div>
+                            <div class="team-info">
+                                <h3>Melissa</h3>
+                                <p class="team-title">Venue Director</p>
+                                <p>With over 15 years in luxury event management, Maria oversees all operations at Casa Del Sol. Her attention to detail and commitment to excellence ensure that every [...]
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="img/team-2.jpg" alt="Grandma - Event Coordinator" width="300" height="300" loading="lazy">
+                            </div>
+                            <div class="team-info">
+                                <h3>Grandma</h3>
+                                <p class="team-title">Event Coordinator</p>
+                                <p>Grandma is often the first face you'll see at Casa Del Sol. Her warm personality and dedicated approach make clients feel instantly welcome and confident in their ch[...]
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="img/team-3.jpg" alt="Don - Client Relations" width="300" height="300" loading="lazy">
+                            </div>
+                            <div class="team-info">
+                                <h3>Don</h3>
+                                <p class="team-title">Client Relations</p>
+                                <p>Don brings creativity and organization to every event he manages. His background in hospitality allows him to transform clients' visions into reality with ease and s[...]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-cta" class="cta dark-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Visit Casa Del Sol?</h2>
+                    <p>Schedule a personal tour to experience the beauty and elegance of our venue firsthand.</p>
+                    <a href="contact.html" class="btn btn-primary">Schedule a Tour</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal/Lightbox for image zoom -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <img src="" alt="Enlarged view of Casa Del Sol venue" class="modal-image" id="modalImage">
+            <button class="modal-close" id="modalClose" aria-label="Close image">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="120" height="48" loading="lazy">
+                    <p>Where Memories Are Made</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <p class="social-heading">Follow Us On Instagram and TikTok</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/casadelsol_events/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@casa.del.sol.events" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                        <i class="fab fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Casa Del Sol AZ. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#header" class="back-to-top section-link" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- Scripts at end of body for faster page load -->
+    <script src="js/main.js" defer></script>
+    <script src="js/header-modern.js" defer></script>
+    <script src="js/image-zoom.js" defer></script>
+</body>
+</html>

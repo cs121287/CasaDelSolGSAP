@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our photo and video gallery at Casa Del Sol AZ - Arizona's premier event venue for weddings, quinceañeras, and special occasions">
+    <title>Gallery | Casa Del Sol AZ</title>
+    
+    <!-- DNS prefetching and preconnect for performance -->
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
+    <!-- Critical CSS preload -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/components/header.css" as="style">
+    <link rel="preload" href="css/components/header-transitions.css" as="style">
+    <link rel="preload" href="css/gallery.css" as="style">
+	<link rel="preload" href="css/gallery-modal.css" as="style">
+    <link rel="preload" href="img/logo.png" as="image" fetchpriority="high">
+    <link rel="preload" href="img/bg2.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="img/cta-bg.jpg" as="image" fetchpriority="low">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/header-transitions.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/common.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/gallery-modal.css">
+    <!-- Responsive CSS (load last to ensure it overrides other styles) -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome - optimized loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Google Fonts with display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet"></noscript>
+    
+    <style>
+        /* Enhanced video gallery grid layout - fixes thumbnail spacing */
+        .video-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* Exactly 5 columns */
+            gap: 2rem; /* Increased from 1.5rem */
+            max-width: 1200px;
+            margin: 2rem auto; /* Added top/bottom margin */
+            padding: 0 1.5rem; /* Added left/right padding */
+            contain: content;
+        }
+        
+        /* Adjust thumbnails to fit better in grid */
+        .video-item {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: #000;
+            aspect-ratio: 9/16; /* Updated for vertical videos */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            contain: layout size;
+            will-change: transform;
+            /* Elegant silver frame effect */
+            border: 4px solid #f8f8f8;
+            box-shadow: 
+                0 0 0 1px #d0d0d0,
+                0 0 0 5px #e9e9e9,
+                2px 2px 8px rgba(0,0,0,0.2);
+            padding: 2px;
+            background: linear-gradient(135deg, #f1f1f1, #e0e0e0, #f5f5f5);
+        }
+        
+        /* Video wrapper aspect ratio fix */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.78% !important; /* 9:16 aspect ratio for vertical videos */
+            height: 0;
+            overflow: hidden;
+            background-color: #000;
+            border-radius: 8px;
+        }
+        
+        /* Position the iframe inside wrapper correctly */
+        .video-wrapper iframe, 
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Prevent header interference when modal is open */
+        body.modal-open .header {
+            visibility: hidden;
+            transform: none !important; /* Prevent any transforms on header when modal is open */
+            pointer-events: none;
+        }
+        
+        /* Improved modal styles for better visibility */
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            opacity: 0.9;
+            z-index: 10002;
+        }
+        
+        /* Enhanced navigation buttons */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            cursor: pointer;
+            z-index: 10002;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .video-gallery-grid {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on medium screens */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .video-gallery-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+                gap: 1.5rem;
+            }
+            
+            .close-modal {
+                top: -35px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-gallery-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+                gap: 1rem;
+            }
+            
+            .close-modal {
+                top: -30px;
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            
+            .modal-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="gallery-page">
+    <div class="video-container">
+        <div class="bg-image" style="background-image: url('img/bg2.jpg');"></div>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="header transparent header-transitions" id="header">
+      <div class="container">
+        <div class="header-main">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="index.html" aria-label="Casa Del Sol AZ - Home">
+              <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="200" height="80" fetchpriority="high">
+            </a>
+          </div>
+          
+          <!-- Main navigation with mega menu -->
+          <nav class="main-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li class="has-dropdown">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                    <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                    <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="services.html">Services</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                    <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                    <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                    <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="about.html">About</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                    <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                    <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                    <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="gallery.html" class="active">Gallery</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="#video-gallery" class="section-link">Video Gallery</a></li>
+                    <li><a href="#photo-gallery" class="section-link">Photo Gallery</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                    <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          
+          <!-- Mobile menu toggle -->
+          <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Overlay Container -->
+      <div class="mobile-menu-container" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-content">
+          <nav class="mobile-nav" aria-label="Mobile Navigation">
+            <ul class="nav-links">
+              <li style="--i:0" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Home</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="index.html">Home Page</a></li>
+                  <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                  <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                  <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <li style="--i:1" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Services</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="services.html">Services Page</a></li>
+                  <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                  <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                  <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                  <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <li style="--i:2" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>About</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="about.html">About Page</a></li>
+                  <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                  <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                  <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                  <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                </ul>
+              </li>
+              
+              <li style="--i:3" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle active">
+                  <span>Gallery</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="gallery.html">Gallery Page</a></li>
+                  <li><a href="#video-gallery" class="section-link">Video Gallery</a></li>
+                  <li><a href="#photo-gallery" class="section-link">Photo Gallery</a></li>
+                </ul>
+              </li>
+              
+              <li style="--i:4" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Contact</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="contact.html">Contact Page</a></li>
+                  <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                  <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="container">
+                <h1></h1>
+            </div>
+        </section>
+
+        <!-- VIDEO GALLERY SECTION - Above Photo Gallery as requested -->
+        <section id="video-gallery" class="content-section">
+		    <h2 class="section-title">Video Gallery</h2>
+            <div class="container content-container">
+                
+                <div class="video-gallery-grid">
+                    <!-- Wedding Videos using higher quality thumbnails -->
+                    <div class="video-item" data-category="weddings" data-video-id="kqdqRfcfHBk">
+                        <img src="https://i.ytimg.com/vi/kqdqRfcfHBk/hqdefault.jpg" alt="Wedding Ceremony" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Garden Ceremony</h3>
+                                <p>Elegant outdoor wedding</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item" data-category="weddings" data-video-id="YIKzl1cB27o">
+                        <img src="https://i.ytimg.com/vi/YIKzl1cB27o/hqdefault.jpg" alt="Wedding Reception" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Evening Reception</h3>
+                                <p>Romantic celebration</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item" data-category="weddings" data-video-id="-QzNWhOSXHQ">
+                        <img src="https://i.ytimg.com/vi/-QzNWhOSXHQ/hqdefault.jpg" alt="Wedding Highlights" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Wedding Highlights</h3>
+                                <p>Special moments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item" data-category="weddings" data-video-id="8hCZQoapCNI">
+                        <img src="https://i.ytimg.com/vi/8hCZQoapCNI/hqdefault.jpg" alt="Wedding Dance" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>First Dance</h3>
+                                <p>Magical evening moment</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quinceañera Videos -->
+                    <div class="video-item" data-category="quinceaneras" data-video-id="cPs81YdTGig">
+                        <img src="https://i.ytimg.com/vi/cPs81YdTGig/hqdefault.jpg" alt="Quinceañera Dance" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Quinceañera Dance</h3>
+                                <p>Beautiful choreography</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item" data-category="quinceaneras" data-video-id="vXKIiB6eq-o">
+                        <img src="https://i.ytimg.com/vi/vXKIiB6eq-o/hqdefault.jpg" alt="Quinceañera Celebration" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Grand Celebration</h3>
+                                <p>Unforgettable moments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Special Events Videos -->                   
+                    <div class="video-item" data-category="special" data-video-id="9jp-zWLgOe0">
+                        <img src="https://i.ytimg.com/vi/9jp-zWLgOe0/hqdefault.jpg" alt="Birthday Party" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Birthday Celebration</h3>
+                                <p>Joyful moments</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Video: YouTube Short -->
+                    <div class="video-item" data-category="special" data-video-id="SD1bPagSWds">
+                        <img src="https://i.ytimg.com/vi/SD1bPagSWds/hqdefault.jpg" alt="Special Event Highlight" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Event Highlight</h3>
+                                <p>Special moments captured</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venue Videos -->
+                    <div class="video-item" data-category="venue" data-video-id="taZGku6YXjU">
+                        <img src="https://i.ytimg.com/vi/taZGku6YXjU/hqdefault.jpg" alt="Venue Tour" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Venue Tour</h3>
+                                <p>Explore our spaces</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item" data-category="venue" data-video-id="oMYs-W7piwU">
+                        <img src="https://i.ytimg.com/vi/oMYs-W7piwU/hqdefault.jpg" alt="Drone Footage" class="video-thumbnail" width="480" height="360" loading="lazy" decoding="async">
+                        <div class="video-overlay">
+                            <button class="play-button" aria-label="Play video">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                            </button>
+                            <div class="video-info">
+                                <h3>Aerial View</h3>
+                                <p>Drone tour of our property</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO GALLERY SECTION -->
+        <section id="photo-gallery" class="gallery-showcase content-section">
+            <h2 class="section-title">Photo Gallery</h2>
+            <div class="container content-container">
+                <div class="gallery-grid">
+                    <!-- Weddings -->
+                    <div class="gallery-item" data-category="weddings">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/wedding-1.webp" type="image/webp">
+                                <img src="img/wedding-1.jpg" alt="Wedding ceremony at Casa Del Sol" loading="lazy" width="400" height="300" data-highres="img/wedding-1-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Garden Ceremony</h3>
+                                    <p>Spring Wedding</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="weddings">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/wedding-2.webp" type="image/webp">
+                                <img src="img/wedding-2.jpg" alt="Wedding reception at Casa Del Sol" loading="lazy" width="400" height="300" data-highres="img/wedding-2-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Elegant Reception</h3>
+                                    <p>Evening Celebration</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="weddings">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/wedding-3.webp" type="image/webp">
+                                <img src="img/wedding-3.jpg" alt="Sunset wedding at Casa Del Sol" loading="lazy" width="400" height="300" data-highres="img/wedding-3-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Sunset Vows</h3>
+                                    <p>Mountain Backdrop</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="weddings">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/wedding-4.webp" type="image/webp">
+                                <img src="img/wedding-4.jpg" alt="Wedding table decorations" loading="lazy" width="400" height="300" data-highres="img/wedding-4-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Elegant Details</h3>
+                                    <p>Tablescape Design</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quinceañeras -->
+                    <div class="gallery-item" data-category="quinceaneras">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/quinceanera-1.webp" type="image/webp">
+                                <img src="img/quinceanera-1.jpg" alt="Quinceañera celebration at Casa Del Sol" loading="lazy" width="400" height="300" data-highres="img/quinceanera-1-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Grand Entrance</h3>
+                                    <p>Quinceañera Celebration</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="quinceaneras">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/quinceanera-2.webp" type="image/webp">
+                                <img src="img/quinceanera-2.jpg" alt="Quinceañera dance celebration" loading="lazy" width="400" height="300" data-highres="img/quinceanera-2-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>First Dance</h3>
+                                    <p>Memorable Moment</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="quinceaneras">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/quinceanera-3.webp" type="image/webp">
+                                <img src="img/quinceanera-3.jpg" alt="Quinceañera venue decorations" loading="lazy" width="400" height="300" data-highres="img/quinceanera-3-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Elegant Decorations</h3>
+                                    <p>Beautiful Setting</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Events -->
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/special-1.webp" type="image/webp">
+                                <img src="img/special-1.jpg" alt="Birthday celebration" loading="lazy" width="400" height="300" data-highres="img/special-1-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Milestone Birthday</h3>
+                                    <p>Evening Celebration</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/special-2.webp" type="image/webp">
+                                <img src="img/special-2.jpg" alt="Anniversary party" loading="lazy" width="400" height="300" data-highres="img/special-2-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Golden Anniversary</h3>
+                                    <p>Family Celebration</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="special">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/special-3.webp" type="image/webp">
+                                <img src="img/special-3.jpg" alt="Graduation celebration" loading="lazy" width="400" height="300" data-highres="img/special-3-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Graduation Party</h3>
+                                    <p>Academic Achievement</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Venue -->
+                    <div class="gallery-item" data-category="venue">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/venue-1.webp" type="image/webp">
+                                <img src="img/venue-1.jpg" alt="Main hall interior" loading="lazy" width="400" height="300" data-highres="img/venue-1-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Main Hall</h3>
+                                    <p>Interior View</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="venue">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/venue-2.webp" type="image/webp">
+                                <img src="img/venue-2.jpg" alt="Garden area" loading="lazy" width="400" height="300" data-highres="img/venue-2-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Desert Garden</h3>
+                                    <p>Outdoor Ceremony Space</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="venue">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/venue-3.webp" type="image/webp">
+                                <img src="img/venue-3.jpg" alt="Sunset Terrace" loading="lazy" width="400" height="300" data-highres="img/venue-3-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Sunset Terrace</h3>
+                                    <p>Mountain Views</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="venue">
+                        <div class="gallery-image">
+                            <picture>
+                                <source srcset="img/venue-4.webp" type="image/webp">
+                                <img src="img/venue-4.jpg" alt="Bridal Suite" loading="lazy" width="400" height="300" data-highres="img/venue-4-large.jpg">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-info">
+                                    <h3>Bridal Suite</h3>
+                                    <p>Preparation Room</p>
+                                </div>
+                                <button class="view-image" aria-label="View full image"><i class="fas fa-search-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Modal with gold close button and navigation -->
+        <div id="image-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+            <div class="modal-content">
+                <button class="close-modal" aria-label="Close image">Close</button>
+                <img id="modal-image" src="" alt="Enlarged gallery image">
+                <div class="modal-caption">
+                    <h3 id="modal-title"></h3>
+                    <p id="modal-description"></p>
+                </div>
+                <button class="modal-nav prev" aria-label="Previous image"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button class="modal-nav next" aria-label="Next image"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <!-- Video Modal with gold close button -->
+        <div id="video-modal" class="modal" role="dialog" aria-labelledby="video-modal-title" aria-modal="true">
+            <div class="modal-content video-modal-content">
+                <button class="close-modal" aria-label="Close video">Close</button>
+                <div class="video-wrapper">
+                    <div class="loading-spinner" aria-hidden="true"></div>
+                    <!-- Video will be loaded here via JavaScript -->
+                </div>
+                <div class="modal-caption">
+                    <h3 id="video-modal-title"></h3>
+                    <p id="video-modal-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <section id="cta" class="cta dark-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Create Your Own Memories?</h2>
+                    <p>Contact us today to begin planning your perfect event at Casa Del Sol.</p>
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="150" height="60" loading="lazy">
+                    <p>Where Memories Are Made</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <p class="social-heading">Follow Us On Instagram and TikTok</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/casadelsol_events/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@casa.del.sol.events" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                        <i class="fab fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Casa Del Sol AZ. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#header" class="back-to-top section-link" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- Scripts loaded with defer for performance -->
+    <script src="js/main.js" defer></script>
+    <script src="js/header-modern.js" defer></script>
+    <script src="js/gallery.js" defer></script>
+    <script src="js/gallery-modal.js" defer></script>
+</body>
+</html>

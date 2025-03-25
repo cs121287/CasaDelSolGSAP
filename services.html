@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Casa Del Sol AZ - Premier event venue services in Arizona for weddings, corporate events, and special occasions">
+    <title>Our Services | Casa Del Sol AZ</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/components/header.css" as="style">
+    <link rel="preload" href="css/components/header-transitions.css" as="style">
+    <link rel="preload" href="css/services.css" as="style">
+    <link rel="preload" href="img/logo.png" as="image" fetchpriority="high">
+    <link rel="preload" href="img/bg2.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="img/cta-bg.jpg" as="image" fetchpriority="low">
+    
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Component CSS -->
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/header-transitions.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/common.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/services.css">
+    
+    <!-- Responsive CSS (load last to ensure it overrides other styles) -->
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome for icons - optimized loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Google Fonts with display swap for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
+</head>
+<body class="services-page">
+    <div class="video-container">
+        <div class="bg-image" style="background-image: url('img/bg2.jpg');"></div>
+        <div class="video-overlay"></div>
+    </div>
+
+    <header class="header transparent header-transitions" id="header">
+      <div class="container">
+        <div class="header-main">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="index.html" aria-label="Casa Del Sol AZ - Home">
+              <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="200" height="80" fetchpriority="high">
+            </a>
+          </div>
+          
+          <!-- Main navigation with mega menu -->
+          <nav class="main-nav" aria-label="Main Navigation">
+            <ul class="nav-links">
+              <li class="has-dropdown">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                    <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                    <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="services.html" class="active">Services</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                    <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                    <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                    <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="about.html">About</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                    <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                    <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                    <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="gallery.html">Gallery</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="gallery.html#photos" class="section-link">Photo Gallery</a></li>
+                    <li><a href="gallery.html#past-events" class="section-link">Past Events</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+              <li class="has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="dropdown">
+                  <ul class="dropdown-links">
+                    <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                    <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          
+          <!-- Mobile menu toggle -->
+          <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Menu Overlay Container -->
+      <div class="mobile-menu-container" id="mobile-menu" aria-hidden="true">
+        <div class="mobile-menu-content">
+          <nav class="mobile-nav" aria-label="Mobile Navigation">
+            <ul class="nav-links">
+              <!-- Home with dropdown -->
+              <li style="--i:0" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Home</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="index.html">Home Page</a></li>
+                  <li><a href="index.html#why-us" class="section-link">Why Choose Casa Del Sol</a></li>
+                  <li><a href="index.html#location" class="section-link">Our Location</a></li>
+                  <li><a href="index.html#cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <!-- Services with dropdown -->
+              <li style="--i:1" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle active">
+                  <span>Services</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="services.html">Services Page</a></li>
+                  <li><a href="services.html#services-list" class="section-link">Available Services</a></li>
+                  <li><a href="services.html#add-ons" class="section-link">Add Ons & Rentals</a></li>
+                  <li><a href="services.html#faq" class="section-link">Frequently Asked Questions</a></li>
+                  <li><a href="services.html#contact-cta" class="section-link">Plan Your Event</a></li>
+                </ul>
+              </li>
+              
+              <!-- About with dropdown -->
+              <li style="--i:2" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>About</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="about.html">About Page</a></li>
+                  <li><a href="about.html#about-intro" class="section-link">Our Background</a></li>
+                  <li><a href="about.html#our-story" class="section-link">Our Story</a></li>
+                  <li><a href="about.html#team" class="section-link">Our Team</a></li>
+                  <li><a href="about.html#contact-cta" class="section-link">Book A Tour</a></li>
+                </ul>
+              </li>
+              
+              <!-- Gallery with dropdown -->
+              <li style="--i:3" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Gallery</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="gallery.html">Gallery Page</a></li>
+                  <li><a href="gallery.html#photos" class="section-link">Photo Gallery</a></li>
+                  <li><a href="gallery.html#past-events" class="section-link">Past Events</a></li>
+                </ul>
+              </li>
+              
+              <!-- Contact with dropdown -->
+              <li style="--i:4" class="mobile-dropdown-item">
+                <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                  <span>Contact</span>
+                  <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                </a>
+                <ul class="mobile-dropdown-content">
+                  <li><a href="contact.html">Contact Page</a></li>
+                  <li><a href="contact.html#contact-section" class="section-link">Contact Form</a></li>
+                  <li><a href="contact.html#contact-info" class="section-link">Contact Information</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Services Page Banner -->
+        <section class="page-banner">
+            <div class="container">
+                <h1></h1>
+            </div>
+        </section>
+
+    <main>
+        <section id="services-list" class="services-section">
+            <div class="container">
+                <h2 class="section-title">We Host All Types of Events</h2>
+                <div class="services-container">
+                    <div class="services-horizontal">
+                        <a href="contact.html?service=weddings" class="service-link" id="weddings">
+                            <i class="fas fa-ring" aria-hidden="true"></i>
+                            <span>Weddings</span>
+                        </a>
+                        
+                        <a href="contact.html?service=quinceaneras" class="service-link" id="quinceaneras">
+                            <i class="fas fa-crown" aria-hidden="true"></i>
+                            <span>Quinceañeras</span>
+                        </a>
+                        
+                        <a href="contact.html?service=baptisms" class="service-link" id="baptisms">
+                            <i class="fas fa-water" aria-hidden="true"></i>
+                            <span>Baptisms</span>
+                        </a>
+                        
+                        <a href="contact.html?service=communions" class="service-link" id="first-communions">
+                            <i class="fas fa-church" aria-hidden="true"></i>
+                            <span>First Communions</span>
+                        </a>
+                        
+                        <a href="contact.html?service=confirmations" class="service-link" id="confirmation-parties">
+                            <i class="fas fa-dove" aria-hidden="true"></i>
+                            <span>Confirmations</span>
+                        </a>
+                        
+                        <a href="contact.html?service=birthdays" class="service-link" id="birthday-parties">
+                            <i class="fas fa-birthday-cake" aria-hidden="true"></i>
+                            <span>Birthdays</span>
+                        </a>
+                        
+                        <a href="contact.html?service=anniversaries" class="service-link" id="anniversaries">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
+                            <span>Anniversaries</span>
+                        </a>
+                        
+                        <a href="contact.html?service=graduations" class="service-link" id="graduations">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <span>Graduations</span>
+                        </a>
+                        
+                        <a href="contact.html?service=engagements" class="service-link" id="engagement-parties">
+                            <i class="fas fa-glass-cheers" aria-hidden="true"></i>
+                            <span>Engagement Parties</span>
+                        </a>
+                        
+                        <a href="contact.html?service=bridal-showers" class="service-link" id="bridal-showers">
+                            <i class="fas fa-gift" aria-hidden="true"></i>
+                            <span>Bridal Showers</span>
+                        </a>
+                        
+                        <a href="contact.html?service=baby-showers" class="service-link" id="baby-showers">
+                            <i class="fas fa-baby" aria-hidden="true"></i>
+                            <span>Baby Showers</span>
+                        </a>
+                        
+                        <a href="contact.html?service=corporate" class="service-link" id="corporate">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+                            <span>Corporate Events</span>
+                        </a>
+                        
+                        <a href="contact.html?service=memorial" class="service-link" id="memorial-services">
+                            <i class="fas fa-praying-hands" aria-hidden="true"></i>
+                            <span>Memorial Services</span>
+                        </a>
+                        
+                        <a href="contact.html?service=equipment" class="service-link" id="equipment-rental">
+                            <i class="fas fa-chair" aria-hidden="true"></i>
+                            <span>Other - Contact Us</span>
+                        </a>
+                    </div>
+                    
+                    <p class="services-description">
+                        Contact us to learn more about our customizable packages for any event type. Our experienced team will work with you to create a memorable experience tailored to your specific [...]
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add-Ons Section -->
+        <section id="add-ons" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Event Add-Ons and Equipment Rental Services Available</h2>
+                <div class="services-container">
+                    <div class="add-ons-grid">
+                        <div class="add-ons-column">
+                            <ul class="add-ons-list">
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Audio Guest Book</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Photo Booth</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Neon Sign Mr. & Mrs.</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> 9' Gold Arch</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Wood Arch/flowers</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Heart arch</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Charger Plates</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Sheet cake</li>
+								<li><i class="fas fa-circle" aria-hidden="true"></i> Bar Services</li>
+                            </ul>
+                        </div>
+                        <div class="add-ons-column">
+                            <ul class="add-ons-list">
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Event planner</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Faux 3-tier Cake</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Centerpieces</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Love seat</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Grass wall</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Tent</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Gift card box</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Upgraded Linens</li>
+								<li><i class="fas fa-circle" aria-hidden="true"></i> Charcuterie Board</li>
+                            </ul>
+                        </div>
+                        <div class="add-ons-column">
+                            <ul class="add-ons-list">
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Champagne Tower</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Dessert tables</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Catering</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Additional rental hours</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Glass Candleholders</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Dinnerware</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Welcome Mirror</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Easel</li>
+                                <li><i class="fas fa-circle" aria-hidden="true"></i> Officiant</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <p class="services-description">
+                        Enhance your event with our premium add-ons and rentals. Contact us for pricing and availability.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            What is included in your venue rental fee?
+                            <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i><i class="fas fa-minus" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our standard venue rental includes the use of the main hall for 8 hours, outdoor ceremony space, tables and chairs for up to 150 guests, basic sound system, on-site park[...]
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Do you provide catering or can we bring our own?
+                            <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i><i class="fas fa-minus" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We offer premium in-house catering services with customizable menu options. You may also choose from our list of approved outside caterers for an additional fee. Outside[...]
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            How far in advance should we book your venue?
+                            <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i><i class="fas fa-minus" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>For weddings and large events, we recommend booking 9-12 months in advance, especially for peak season dates (March-June and September-November). Corporate events and sm[...]
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            What is your payment and cancellation policy?
+                            <span class="icon"><i class="fas fa-plus" aria-hidden="true"></i><i class="fas fa-minus" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We require a 25% non-refundable deposit to secure your date, with 50% due 6 months before the event and the remaining balance due 30 days prior. Cancellations made more [...]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact-cta" class="cta dark-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Start Planning Your Event?</h2>
+                    <p>Contact us today to schedule a personal tour of Casa Del Sol.</p>
+                    <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Casa Del Sol AZ Logo" width="120" height="48" loading="lazy">
+                    <p>Where Memories Are Made</p>
+                </div>
+            </div>
+            <div class="footer-social">
+                <p class="social-heading">Follow Us On Instagram and TikTok</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/casadelsol_events/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@casa.del.sol.events" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                        <i class="fab fa-tiktok" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Casa Del Sol AZ. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#header" class="back-to-top section-link" aria-label="Back to top">
+        <i class="fas fa-chevron-up" aria-hidden="true"></i>
+    </a>
+
+    <!-- Scripts at end of body for faster page load - Consolidated for better performance -->
+    <script src="js/main.js" defer></script>
+    <script src="js/header-modern.js" defer></script>
+    <script src="js/faq.js" defer></script>
+</body>
+</html>
